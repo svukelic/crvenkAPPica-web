@@ -22,6 +22,7 @@ if (($UserName != null) && ($Password != null)){
     $nesto=$rezultat->fetch_array();
 	
 	if ($rezultat->num_rows!=0 && $nesto['password']==$Password){
+		$id = $nesto['iduser'];
 		$upit_hash="SELECT * FROM hashbase WHERE naziv='login_uspjeh'";
 		$rezultat_hash=$baza->selectDB($upit_hash);
 		$dohvat=$rezultat_hash->fetch_array();
@@ -33,7 +34,7 @@ if (($UserName != null) && ($Password != null)){
 		$dohvat=$rezultat_hash->fetch_array();
 		$hash = $dohvat['vrijednost'];
 	}
-	 echo $hash;
+	 echo json_encode(array("Status" => $hash, "Id" => $id), JSON_UNESCAPED_UNICODE);
 }
 else {
 	$upit_hash="SELECT * FROM hashbase WHERE naziv='nepostojeci_korisnik'";
@@ -41,7 +42,7 @@ else {
 	$dohvat=$rezultat_hash->fetch_array();
 	$hash = $dohvat['vrijednost'];
 	
-	echo $hash;
+	echo json_encode(array("Status" => $hash, "Id" => $hash), JSON_UNESCAPED_UNICODE);
 }
 
 ?>
