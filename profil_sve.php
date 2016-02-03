@@ -7,7 +7,7 @@ header('charset=utf-8');
 
 $datum = date('Y-m-d H:i:s');
 
-	$upit="SELECT * FROM lovista_has_lovine";
+	$upit="SELECT * FROM user";
     $rezultat=$baza->selectDB($upit);
     //$nesto=$rezultat->fetch_array();
 	
@@ -15,7 +15,7 @@ $datum = date('Y-m-d H:i:s');
 		$data = array();
 		while($nesto=$rezultat->fetch_array()){
 		
-			$data[] = array("Loviste" => $nesto['lovista_idlovista'] , "Lovina" => $nesto['lovina__idlovina']);
+			$data[] = array("id" => $nesto['iduser'], "Username" => $nesto['username'], "Ime" => $nesto['ime'], "Prezime" => $nesto['prezime'], "Dob" => $nesto['datum_rod']);
 
 		}
 	}

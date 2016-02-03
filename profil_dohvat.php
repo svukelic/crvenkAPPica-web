@@ -19,7 +19,7 @@ if ($UserName != null){
     $nesto=$rezultat->fetch_array();
 	
 	if ($rezultat->num_rows!=0){
-		echo json_encode(array("Ime" => $nesto['ime'], "Prezime" => $nesto['prezime'], "Dob" => $nesto['datum_rod']), JSON_UNESCAPED_UNICODE);
+		echo json_encode(array("id" => $nesto['iduser'], "Ime" => $nesto['ime'], "Prezime" => $nesto['prezime'], "Dob" => $nesto['datum_rod'], "Status" => $nesto['status']), JSON_UNESCAPED_UNICODE);
 	}
 	else {
 		$ispis = "profil_neuspjeh";
